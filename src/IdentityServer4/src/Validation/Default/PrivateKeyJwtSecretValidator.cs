@@ -116,8 +116,8 @@ namespace IdentityServer4.Validation
                     _logger.LogError("Both 'sub' and 'iss' in the client assertion token must have a value of client_id.");
                     return fail;
                 }
-                
-                var exp = jwtToken.Payload.Exp;
+
+                var exp = jwtToken.Payload.Expiration;
                 if (!exp.HasValue)
                 {
                     _logger.LogError("exp is missing.");
