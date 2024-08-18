@@ -2,8 +2,6 @@ name: 'NET8CI'
 
 on:
   push:
-    branches:
-    - net8
     tags:
     - '*.*.*'
   pull_request:
