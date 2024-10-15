@@ -19,8 +19,10 @@ jobs:
         runs-on: ${{ matrix.runs-on }}
         steps:
             - uses: actions/checkout@af513c7a016048ae468971c52ed77d9562c7c819
+            - uses: actions/setup-dotnet@v4
+              with:
+                  global-json-file: ./global.json
             - run: dotnet --info
-
             - if: (matrix.runs-on == 'windows-latest') && (github.ref == 'refs/heads/net8' || contains(github.ref, 'refs/tags/'))
               run: |
                   ./build.ps1 quick
