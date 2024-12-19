@@ -122,22 +122,6 @@ namespace IdentityServer4.Events
         /// </value>
         public string RemoteIpAddress { get; set; }
 
-        /// <summary>
-        /// Obfuscates a token.
-        /// </summary>
-        /// <param name="value">The token.</param>
-        /// <returns></returns>
-        protected static string Obfuscate(string value)
-        {
-            var last4Chars = "****";
-            if (value.IsPresent() && value.Length > 4)
-            {
-                last4Chars = value.Substring(value.Length - 4);
-            }
-
-            return "****" + last4Chars;
-        }
-
         /// <inheritdoc/>
         public override string ToString()
         {

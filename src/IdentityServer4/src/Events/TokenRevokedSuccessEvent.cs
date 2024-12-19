@@ -27,7 +27,7 @@ namespace IdentityServer4.Events
             ClientId = client.ClientId;
             ClientName = client.ClientName;
             TokenType = requestResult.TokenTypeHint;
-            Token = Obfuscate(requestResult.Token);
+            Token = requestResult.Token;
         }
 
         /// <summary>

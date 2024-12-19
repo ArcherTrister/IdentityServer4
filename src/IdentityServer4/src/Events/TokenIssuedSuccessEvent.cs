@@ -179,7 +179,7 @@ namespace IdentityServer4.Events
             public Token(string type, string value)
             {
                 TokenType = type;
-                TokenValue = Obfuscate(value);
+                TokenValue = value;
             }
 
             /// <summary>

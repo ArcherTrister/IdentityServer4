@@ -33,9 +33,9 @@ namespace IdentityServer4.Events
 
             if (result.Token.IsPresent())
             {
-                Token = Obfuscate(result.Token);
+                Token = result.Token;
             }
-            
+
             if (!result.Claims.IsNullOrEmpty())
             {
                 ClaimTypes = result.Claims.Select(c => c.Type).Distinct();

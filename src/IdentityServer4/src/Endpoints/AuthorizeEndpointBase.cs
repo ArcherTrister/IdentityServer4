@@ -158,15 +158,15 @@ namespace IdentityServer4.Endpoints
 
             if (response.IdentityToken != null)
             {
-                Logger.LogTrace("Identity token issued for {clientId} / {subjectId}: {token}", clientId, subjectId, response.IdentityToken);
+                Logger.LogTrace("Identity token issued for {clientId} / {subjectId}: {token}", clientId, subjectId, response.IdentityToken.Obfuscate());
             }
             if (response.Code != null)
             {
-                Logger.LogTrace("Code issued for {clientId} / {subjectId}: {token}", clientId, subjectId, response.Code);
+                Logger.LogTrace("Code issued for {clientId} / {subjectId}: {token}", clientId, subjectId, response.Code.Obfuscate());
             }
             if (response.AccessToken != null)
             {
-                Logger.LogTrace("Access token issued for {clientId} / {subjectId}: {token}", clientId, subjectId, response.AccessToken);
+                Logger.LogTrace("Access token issued for {clientId} / {subjectId}: {token}", clientId, subjectId, response.AccessToken.Obfuscate());
             }
         }
 

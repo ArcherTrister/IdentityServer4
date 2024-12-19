@@ -32,7 +32,7 @@ namespace IdentityServer4.Events
 
             if (token.IsPresent())
             {
-                Token = Obfuscate(token);
+                Token = token;
             }
 
             if (apiScopes != null)
