@@ -7,9 +7,7 @@ using IdentityServer4.Validation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
-using static IdentityModel.OidcConstants;
-using IdentityServer4.Services;
-using IdentityServer4.Events;
+using Duende.IdentityModel;
 
 namespace IdentityServer4.AspNetIdentity
 {
@@ -58,7 +56,7 @@ namespace IdentityServer4.AspNetIdentity
 
                     _logger.LogInformation("Credentials validated for username: {username}", context.UserName);
 
-                    context.Result = new GrantValidationResult(sub, AuthenticationMethods.Password);
+                    context.Result = new GrantValidationResult(sub, OidcConstants.AuthenticationMethods.Password);
                     return;
                 }
                 else if (result.IsLockedOut)

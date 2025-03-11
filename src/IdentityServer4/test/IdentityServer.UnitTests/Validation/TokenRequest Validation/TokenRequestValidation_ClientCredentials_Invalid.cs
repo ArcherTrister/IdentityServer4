@@ -5,8 +5,8 @@
 using System.Collections.Specialized;
 using System.Linq;
 using System.Threading.Tasks;
+using Duende.IdentityModel;
 using FluentAssertions;
-using IdentityModel;
 using IdentityServer.UnitTests.Validation.Setup;
 using IdentityServer4.Stores;
 using Xunit;

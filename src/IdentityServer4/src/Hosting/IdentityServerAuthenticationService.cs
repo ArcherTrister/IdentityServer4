@@ -11,8 +11,8 @@ using Microsoft.Extensions.Logging;
 using IdentityServer4.Configuration.DependencyInjection;
 using IdentityServer4.Extensions;
 using System;
-using IdentityModel;
 using System.Linq;
+using Duende.IdentityModel;
 using IdentityServer4.Configuration;
 
 namespace IdentityServer4.Hosting

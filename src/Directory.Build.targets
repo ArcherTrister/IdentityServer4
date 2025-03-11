@@ -20,7 +20,7 @@
     <PackageReference Update="xunit.runner.visualstudio" Version="2.4.1" PrivateAssets="All" />
 
     <!--our stuff -->
-    <PackageReference Update="IdentityModel" Version="7.0.0" />
+    <PackageReference Update="Duende.IdentityModel" Version="7.0.0" />
 
     <!--microsoft extensions -->
     <PackageReference Update="Microsoft.Extensions.Caching.Memory" Version="$(ExtensionsVersion)" />
@@ -31,7 +31,6 @@
     <PackageReference Update="Microsoft.Extensions.Options.ConfigurationExtensions" Version="$(ExtensionsVersion)" />
     
     <!--misc -->
-    <PackageReference Update="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Update="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="8.0.1" />
     <PackageReference Update="System.IdentityModel.Tokens.Jwt" Version="8.0.1" />
     <PackageReference Update="System.Security.Principal.Windows" Version="5.0.0" />

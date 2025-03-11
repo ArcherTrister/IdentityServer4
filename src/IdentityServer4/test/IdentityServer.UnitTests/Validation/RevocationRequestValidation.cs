@@ -5,8 +5,8 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Threading.Tasks;
+using Duende.IdentityModel;
 using FluentAssertions;
-using IdentityModel;
 using IdentityServer.UnitTests.Common;
 using IdentityServer4;
 using IdentityServer4.Models;

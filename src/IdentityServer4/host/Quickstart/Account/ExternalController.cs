@@ -1,4 +1,3 @@
-using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Events;
 using IdentityServer4.Services;
@@ -14,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Duende.IdentityModel;
 
 namespace IdentityServerHost.Quickstart.UI
 {

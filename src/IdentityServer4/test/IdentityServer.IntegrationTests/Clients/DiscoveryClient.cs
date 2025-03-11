@@ -3,12 +3,12 @@
 
 
 using FluentAssertions;
-using IdentityModel.Client;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Duende.IdentityModel.Client;
 using IdentityServer.IntegrationTests.Clients.Setup;
 using Xunit;
 

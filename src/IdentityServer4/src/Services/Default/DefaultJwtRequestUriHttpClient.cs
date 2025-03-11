@@ -7,9 +7,9 @@ using IdentityServer4.Models;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
 using System.Threading.Tasks;
-using IdentityModel;
 using IdentityServer4.Configuration;
 using System.Collections.Generic;
+using Duende.IdentityModel;
 
 namespace IdentityServer4.Services
 {

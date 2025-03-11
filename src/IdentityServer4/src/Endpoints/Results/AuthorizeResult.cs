@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using IdentityServer4.Models;
 using IdentityServer4.Extensions;
 using IdentityServer4.Hosting;
-using IdentityModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -16,6 +15,7 @@ using IdentityServer4.Stores;
 using IdentityServer4.ResponseHandling;
 using Microsoft.AspNetCore.Authentication;
 using System.Text.Encodings.Web;
+using Duende.IdentityModel;
 
 namespace IdentityServer4.Endpoints.Results
 {

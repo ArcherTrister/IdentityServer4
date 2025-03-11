@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using IdentityServer4.Extensions;
 using System.Security.Claims;
 using IdentityServer4.Services;
-using IdentityModel;
 using System;
+using Duende.IdentityModel;
 using Microsoft.AspNetCore.Authentication;
 
 namespace IdentityServer4

@@ -1,0 +1,16 @@
+﻿<Solution>
+  <Folder Name="/src/">
+    <Project Path="src\AspNetIdentity\src\IdentityServer4.AspNetIdentity.csproj" Type="Classic C#" />
+    <Project Path="src\EntityFramework.Storage\src\IdentityServer4.EntityFramework.Storage.csproj" Type="Classic C#" />
+    <Project Path="src\EntityFramework\src\IdentityServer4.EntityFramework.csproj" Type="Classic C#" />
+    <Project Path="src\IdentityServer4\src\IdentityServer4.csproj" Type="Classic C#" />
+    <Project Path="src\Storage\src\IdentityServer4.Storage.csproj" Type="Classic C#" />
+  </Folder>
+  <Folder Name="/test/">
+    <Project Path="src\EntityFramework.Storage\test\IntegrationTests\IdentityServer4.EntityFramework.IntegrationTests.csproj" Type="Classic C#" />
+    <Project Path="src\EntityFramework.Storage\test\UnitTests\IdentityServer4.EntityFramework.UnitTests.csproj" Type="Classic C#" />
+    <Project Path="src\EntityFramework\test\IdentityServer4.EntityFramework.Tests\IdentityServer4.EntityFramework.Tests.csproj" Type="Classic C#" />
+    <Project Path="src\IdentityServer4\test\IdentityServer.IntegrationTests\IdentityServer.IntegrationTests.csproj" Type="Classic C#" />
+    <Project Path="src\IdentityServer4\test\IdentityServer.UnitTests\IdentityServer.UnitTests.csproj" Type="Classic C#" />
+  </Folder>
+</Solution>

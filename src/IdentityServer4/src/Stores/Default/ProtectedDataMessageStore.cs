@@ -5,9 +5,9 @@
 using IdentityServer4.Models;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.DataProtection;
-using IdentityModel;
 using System.Text;
 using System;
+using Duende.IdentityModel;
 using Microsoft.Extensions.Logging;
 
 namespace IdentityServer4.Stores

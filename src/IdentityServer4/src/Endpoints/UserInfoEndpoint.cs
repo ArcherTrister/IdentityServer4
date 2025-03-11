@@ -8,9 +8,9 @@ using IdentityServer4.ResponseHandling;
 using Microsoft.Extensions.Logging;
 using IdentityServer4.Hosting;
 using IdentityServer4.Endpoints.Results;
-using IdentityModel;
 using Microsoft.AspNetCore.Http;
 using System.Net;
+using Duende.IdentityModel;
 
 namespace IdentityServer4.Endpoints
 {

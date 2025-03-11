@@ -10,14 +10,14 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
+using System.Text.Json;
 using System.Threading.Tasks;
+using Duende.IdentityModel;
 using FluentAssertions;
-using IdentityModel;
 using IdentityServer.IntegrationTests.Common;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
 using Microsoft.AspNetCore.WebUtilities;
-using Newtonsoft.Json.Linq;
 using Xunit;
 using static IdentityServer4.IdentityServerConstants;
 
@@ -137,7 +137,7 @@ namespace IdentityServer.IntegrationTests.Endpoints.EndSession
 
             _mockPipeline.BrowserClient.AllowAutoRedirect = false;
             var response = await _mockPipeline.BrowserClient.GetAsync(url);
-            var authorization = new IdentityModel.Client.AuthorizeResponse(response.Headers.Location.ToString());
+            var authorization = new Duende.IdentityModel.Client.AuthorizeResponse(response.Headers.Location.ToString());
             var id_token = authorization.IdentityToken;
 
             response = await _mockPipeline.BrowserClient.GetAsync(IdentityServerPipeline.EndSessionEndpoint +
@@ -224,7 +224,7 @@ namespace IdentityServer.IntegrationTests.Endpoints.EndSession
 
             _mockPipeline.BrowserClient.AllowAutoRedirect = false;
             var response = await _mockPipeline.BrowserClient.GetAsync(url);
-            var authorization = new IdentityModel.Client.AuthorizeResponse(response.Headers.Location.ToString());
+            var authorization = new Duende.IdentityModel.Client.AuthorizeResponse(response.Headers.Location.ToString());
             var id_token = authorization.IdentityToken;
 
             _mockPipeline.BrowserClient.AllowAutoRedirect = true;
@@ -272,7 +272,7 @@ namespace IdentityServer.IntegrationTests.Endpoints.EndSession
             _mockPipeline.BrowserClient.AllowAutoRedirect = false;
             var response = await _mockPipeline.BrowserClient.GetAsync(url);
 
-            var authorization = new IdentityModel.Client.AuthorizeResponse(response.Headers.Location.ToString());
+            var authorization = new Duende.IdentityModel.Client.AuthorizeResponse(response.Headers.Location.ToString());
             var id_token = authorization.IdentityToken;
 
             _mockPipeline.BrowserClient.AllowAutoRedirect = true;
@@ -305,7 +305,7 @@ namespace IdentityServer.IntegrationTests.Endpoints.EndSession
             _mockPipeline.BrowserClient.AllowAutoRedirect = false;
             var response = await _mockPipeline.BrowserClient.GetAsync(url);
 
-            var authorization = new IdentityModel.Client.AuthorizeResponse(response.Headers.Location.ToString());
+            var authorization = new Duende.IdentityModel.Client.AuthorizeResponse(response.Headers.Location.ToString());
             var id_token = authorization.IdentityToken;
 
             await _mockPipeline.LoginAsync("alice");
@@ -429,7 +429,7 @@ namespace IdentityServer.IntegrationTests.Endpoints.EndSession
                 state: "123_state",
                 nonce: "123_nonce");
             var response = await _mockPipeline.BrowserClient.GetAsync(url);
-            var authorization = new IdentityModel.Client.AuthorizeResponse(response.Headers.Location.ToString());
+            var authorization = new Duende.IdentityModel.Client.AuthorizeResponse(response.Headers.Location.ToString());
             var id_token = authorization.IdentityToken;
 
             _mockPipeline.BrowserClient.AllowAutoRedirect = true;
@@ -454,7 +454,7 @@ namespace IdentityServer.IntegrationTests.Endpoints.EndSession
                 state: "123_state",
                 nonce: "123_nonce");
             var response = await _mockPipeline.BrowserClient.GetAsync(url);
-            var authorization = new IdentityModel.Client.AuthorizeResponse(response.Headers.Location.ToString());
+            var authorization = new Duende.IdentityModel.Client.AuthorizeResponse(response.Headers.Location.ToString());
             var id_token = authorization.IdentityToken;
 
             _mockPipeline.BrowserClient.AllowAutoRedirect = true;
@@ -514,22 +514,17 @@ namespace IdentityServer.IntegrationTests.Endpoints.EndSession
 
                 var bytes = Base64Url.Decode(parts[1]);
                 var json = Encoding.UTF8.GetString(bytes);
-                var payload = JObject.Parse(json);
+                var payload = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(json);
                 payload["iss"].ToString().Should().Be("https://server");
                 payload["sub"].ToString().Should().Be("bob");
                 payload["aud"].ToString().Should().Be("client3");
                 payload["iat"].Should().NotBeNull();
                 payload["jti"].Should().NotBeNull();
                 payload["sid"].Should().NotBeNull();
-                payload["events"].Type.Should().Be(JTokenType.Object);
-
-                var events = (JObject)payload["events"];
-                events.Count.Should().Be(1);
-                events["http://schemas.openid.net/event/backchannel-logout"].Should().NotBeNull();
-                events["http://schemas.openid.net/event/backchannel-logout"].Type.Should().Be(JTokenType.Object);
-
-                var evt = (JObject)events["http://schemas.openid.net/event/backchannel-logout"];
-                evt.Count.Should().Be(0);
+                payload["events"].ValueKind.Should().Be(JsonValueKind.Object);
+                payload["events"].EnumerateObject().Single().Name.Should()
+                    .Be("http://schemas.openid.net/event/backchannel-logout");
+                payload["events"].EnumerateObject().Single().Value.EnumerateObject().Count().Should().Be(0);
             };
 
             await _mockPipeline.LoginAsync("bob");

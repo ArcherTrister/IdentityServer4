@@ -7,9 +7,9 @@ using IdentityServer4.Configuration;
 using IdentityServer4.Models;
 using System.Collections.Specialized;
 using System.Security.Claims;
-using IdentityModel;
 using System.Linq;
 using System;
+using Duende.IdentityModel;
 
 namespace IdentityServer4.Validation
 {

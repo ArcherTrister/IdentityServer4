@@ -2,7 +2,6 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-using IdentityModel;
 using IdentityServer4.Configuration;
 using IdentityServer4.Events;
 using IdentityServer4.Extensions;
@@ -16,6 +15,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Duende.IdentityModel;
 using IdentityServer4.Logging.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.IdentityModel.Tokens;

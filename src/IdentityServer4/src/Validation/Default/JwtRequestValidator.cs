@@ -7,15 +7,13 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityModel;
+using Duende.IdentityModel;
 using IdentityServer4.Configuration;
 using IdentityServer4.Extensions;
 using IdentityServer4.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace IdentityServer4.Validation
 {
@@ -205,11 +203,15 @@ namespace IdentityServer4.Validation
                         case string s:
                             payload.Add(key, s);
                             break;
-                        case JObject jobj:
-                            payload.Add(key, jobj.ToString(Formatting.None));
-                            break;
-                        case JArray jarr:
-                            payload.Add(key, jarr.ToString(Formatting.None));
+                        default:
+                            var type = value?.GetType()?.ToString();
+                            if(
+                                "Microsoft.IdentityModel.Json.Linq.JObject" == type ||
+                                "Microsoft.IdentityModel.Json.Linq.JArray" == type ||
+                                "System.Text.Json.JsonElement" == type
+                            ) 
+                                payload.Add(key, value.ToString());
+
                             break;
                     }
                 }

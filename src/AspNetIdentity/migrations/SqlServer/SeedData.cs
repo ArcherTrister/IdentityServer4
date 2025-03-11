@@ -5,8 +5,8 @@
 using System;
 using System.Linq;
 using System.Security.Claims;
+using Duende.IdentityModel;
 using IdentityServerHost.Data;
-using IdentityModel;
 using IdentityServer4.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
