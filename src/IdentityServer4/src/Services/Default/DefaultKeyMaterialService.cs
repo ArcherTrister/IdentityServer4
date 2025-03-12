@@ -4,7 +4,6 @@
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.IdentityModel.Tokens;
 using IdentityServer4.Stores;
 using IdentityServer4.Models;
 using System.Linq;
@@ -34,11 +33,11 @@ namespace IdentityServer4.Services
         }
 
         /// <inheritdoc/>
-        public async Task<SigningCredentials> GetSigningCredentialsAsync(IEnumerable<string> allowedAlgorithms = null)
+        public async Task<Microsoft.IdentityModel.Tokens.SigningCredentials> GetSigningCredentialsAsync(IEnumerable<string> allowedAlgorithms = null)
         {
             if (_signingCredentialStores.Any())
             {
-                if (allowedAlgorithms.IsNullOrEmpty())
+                if (IEnumerableExtensions.IsNullOrEmpty(allowedAlgorithms))
                 {
                     return await _signingCredentialStores.First().GetSigningCredentialsAsync();
                 }
@@ -56,9 +55,9 @@ namespace IdentityServer4.Services
         }
 
         /// <inheritdoc/>
-        public async Task<IEnumerable<SigningCredentials>> GetAllSigningCredentialsAsync()
+        public async Task<IEnumerable<Microsoft.IdentityModel.Tokens.SigningCredentials>> GetAllSigningCredentialsAsync()
         {
-            var credentials = new List<SigningCredentials>();
+            var credentials = new List<Microsoft.IdentityModel.Tokens.SigningCredentials>();
 
             foreach (var store in _signingCredentialStores)
             {
