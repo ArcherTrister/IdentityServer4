@@ -213,3 +213,4 @@ workspace.xml
 src/IdentityServer4/host/identityserver.db
 tempkey.jwk
 src/IdentityServer4/.idea/
+.DS_Store
