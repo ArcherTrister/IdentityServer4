@@ -1,4 +1,4 @@
-name: "NET8CI"
+name: "publish"
 
 on:
     push:

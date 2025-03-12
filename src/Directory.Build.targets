@@ -1,9 +1,16 @@
 <Project>
+<PropertyGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <AspNetCoreVersion>8.0.1</AspNetCoreVersion>
+    <EntityFrameworkVersion>8.0.11</EntityFrameworkVersion>
+    <MicrosoftExtensionsVersion>8.0.1</MicrosoftExtensionsVersion>
+    <WilsonVersion>7.1.2</WilsonVersion>
+  </PropertyGroup>
 
-  <PropertyGroup>
-    <FrameworkVersion>8.0.4</FrameworkVersion>
-    <ExtensionsVersion>8.0.4</ExtensionsVersion>
-    <EntityFrameworkVersion>8.0.4</EntityFrameworkVersion>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net9.0'">
+      <AspNetCoreVersion>9.0.0</AspNetCoreVersion>
+      <EntityFrameworkVersion>9.0.0</EntityFrameworkVersion>
+      <MicrosoftExtensionsVersion>9.0.0</MicrosoftExtensionsVersion>
+      <WilsonVersion>8.0.1</WilsonVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,27 +30,27 @@
     <PackageReference Update="IdentityModel" Version="7.0.0" />
 
     <!--microsoft extensions -->
-    <PackageReference Update="Microsoft.Extensions.Caching.Memory" Version="$(ExtensionsVersion)" />
-    <PackageReference Update="Microsoft.Extensions.Http" Version="$(ExtensionsVersion)" />
-    <PackageReference Update="Microsoft.Extensions.Http.Polly" Version="$(ExtensionsVersion)" />
-    <PackageReference Update="Microsoft.Extensions.Logging" Version="$(ExtensionsVersion)" />
-    <PackageReference Update="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
-    <PackageReference Update="Microsoft.Extensions.Options.ConfigurationExtensions" Version="$(ExtensionsVersion)" />
+    <PackageReference Update="Microsoft.Extensions.Caching.Memory" Version="$(MicrosoftExtensionsVersion)" />
+    <PackageReference Update="Microsoft.Extensions.Http" Version="$(MicrosoftExtensionsVersion)" />
+    <PackageReference Update="Microsoft.Extensions.Http.Polly" Version="$(MicrosoftExtensionsVersion)" />
+    <PackageReference Update="Microsoft.Extensions.Logging" Version="$(MicrosoftExtensionsVersion)" />
+    <PackageReference Update="Microsoft.Extensions.Logging.Console" Version="$(MicrosoftExtensionsVersion)" />
+    <PackageReference Update="Microsoft.Extensions.Options.ConfigurationExtensions" Version="$(MicrosoftExtensionsVersion)" />
     
     <!--misc -->
     <PackageReference Update="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Update="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="8.0.1" />
-    <PackageReference Update="System.IdentityModel.Tokens.Jwt" Version="8.0.1" />
+    <PackageReference Update="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="$(WilsonVersion)" />
+    <PackageReference Update="System.IdentityModel.Tokens.Jwt" Version="$(WilsonVersion)" />
     <PackageReference Update="System.Security.Principal.Windows" Version="5.0.0" />
     <PackageReference Update="AutoMapper" Version="12.0.1" />
     
     <!--microsoft asp.net core -->
-    <PackageReference Update="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="$(FrameworkVersion)" />
-    <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="$(FrameworkVersion)" />
-    <PackageReference Update="Microsoft.AspNetCore.Identity" Version="$(FrameworkVersion)" />
-    <PackageReference Update="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(FrameworkVersion)" />
-    <PackageReference Update="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="$(FrameworkVersion)" />
-    <PackageReference Update="Microsoft.AspNetCore.Authentication.Certificate" Version="$(FrameworkVersion)"/>
+    <PackageReference Update="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="$(AspNetCoreVersion)" />
+    <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="$(AspNetCoreVersion)" />
+    <PackageReference Update="Microsoft.AspNetCore.Identity" Version="$(AspNetCoreVersion)" />
+    <PackageReference Update="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(AspNetCoreVersion)" />
+    <PackageReference Update="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="$(AspNetCoreVersion)" />
+    <PackageReference Update="Microsoft.AspNetCore.Authentication.Certificate" Version="$(AspNetCoreVersion)"/>
     
     <!--microsoft entity framework -->
     <PackageReference Update="Microsoft.EntityFrameworkCore.Relational" Version="$(EntityFrameworkVersion)" />
