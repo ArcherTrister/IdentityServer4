@@ -4,9 +4,6 @@
 
 using IdentityServer4.Extensions;
 using IdentityServer4.Models;
-
-using Microsoft.IdentityModel.Tokens;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;

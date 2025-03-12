@@ -7,17 +7,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel.Client;
+using IdentityServer.IntegrationTests.Common;
 using IdentityServer.IntegrationTests.Endpoints.Introspection.Setup;
-
-using IdentityServer4.Extensions;
-
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace IdentityServer.IntegrationTests.Endpoints.Introspection
@@ -123,7 +120,7 @@ namespace IdentityServer.IntegrationTests.Endpoints.Introspection
                 client_secret = "secret",
                 token = tokenResponse.AccessToken
             };
-            var json = JsonConvert.SerializeObject(data);
+            var json = JsonSerializer.Serialize(data);
 
             var client = new HttpClient(_handler);
             var response = await client.PostAsync(IntrospectionEndpoint, new StringContent(json, Encoding.UTF8, "application/json"));
@@ -261,14 +258,14 @@ namespace IdentityServer.IntegrationTests.Endpoints.Introspection
                 Token = tokenResponse.AccessToken
             });
 
-            var values = introspectionResponse.Json?.ToObject<Dictionary<string, object>>();
+            var values = introspectionResponse.Raw.GetFields();
 
-            values["aud"].GetType().Name.Should().Be("JArray");
+            values["aud"].ValueKind.Should().Be(JsonValueKind.Array);
 
-            var audiences = ((JArray)values["aud"]);
+            var audiences = values["aud"].EnumerateArray();
             foreach (var aud in audiences)
             {
-                aud.Type.Should().Be(JTokenType.String);
+                aud.ValueKind.Should().Be(JsonValueKind.String);
             }
 
             values["iss"].GetType().Name.Should().Be("String");
