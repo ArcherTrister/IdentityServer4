@@ -1,3 +1,86 @@
+# 概述
+
+## ⚠️ 注意事项
+
+本项目为原始项目的**分支版本（Fork）**，仅用于特定用途，**不会发布到 nuget.org**，**仅发布到 MyGet 私有源**。
+
+因此，在安装和使用前，**必须配置 NuGet 源以包含对应的 MyGet 地址**。
+
+项目可能包含功能增强、Bug 修复或其他适配性调整，建议通过 Git 提交记录或 CHANGELOG 查看具体变更内容。
+
+## Nuget Packages
+
+| 名称 | 描述 | 链接 |
+| --- | --- | --- |
+| [IdentityServer4](https://www.myget.org/feed/archertrister/package/nuget/IdentityServer4) | OpenID Connect and OAuth 2.0 Framework for ASP.NET Core | [访问](https://www.myget.org/feed/archertrister/package/nuget/IdentityServer4) |
+| [IdentityServer4.AspNetIdentity](https://www.myget.org/feed/archertrister/package/nuget/IdentityServer4.AspNetIdentity) | ASP.NET Core Identity Integration for IdentityServer4 | [访问](https://www.myget.org/feed/archertrister/package/nuget/IdentityServer4.AspNetIdentity) |
+| [IdentityServer4.EntityFramework](https://www.myget.org/feed/archertrister/package/nuget/IdentityServer4.EntityFramework) | EntityFramework persistence layer for IdentityServer4 | [访问](https://www.myget.org/feed/archertrister/package/nuget/IdentityServer4.EntityFramework) |
+| [IdentityServer4.Storage](https://www.myget.org/feed/archertrister/package/nuget/IdentityServer4.Storage) | Storage interfaces and models for IdentityServer4 | [访问](https://www.myget.org/feed/archertrister/package/nuget/IdentityServer4.Storage) |
+| [IdentityServer4.EntityFramework.Storage](https://www.myget.org/feed/archertrister/package/nuget/IdentityServer4.EntityFramework.Storage) | EntityFramework storage implementations for IdentityServer4 | [访问](https://www.myget.org/feed/archertrister/package/nuget/IdentityServer4.EntityFramework.Storage) |
+
+
+---
+
+## ✅ 使用方式
+
+您可以通过以下任意一种方式使用本包：
+
+---
+
+### 方法一：在 `nuget.config` 中添加 MyGet 源
+
+在项目目录下找到或创建 `nuget.config` 文件，并添加如下内容：
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <add key="MyGet" value="https://www.myget.org/F/archertrister/api/v3/index.json" />
+  </packageSources>
+</configuration>
+```
+
+配置完成后，可直接使用以下命令安装包：
+
+```bash
+nuget install PackageName -Version x.x.x
+```
+
+或在项目中使用：
+
+```bash
+dotnet add package PackageName --version x.x.x
+```
+
+---
+
+### 方法二：安装时直接指定源地址
+
+如果不修改 `nuget.config`，也可以在安装包时通过 `-Source` 参数指定 MyGet 源地址：
+
+```bash
+nuget install PackageName -Version x.x.x -Source https://www.myget.org/F/archertrister/api/v3/index.json
+```
+
+或使用 `dotnet` 命令：
+
+```bash
+dotnet add package PackageName --version x.x.x --source https://www.myget.org/F/archertrister/api/v3/index.json
+```
+
+---
+
+## 📌 总结
+
+- 本包只能从 MyGet 安装。
+- 使用前必须配置 MyGet 源。
+- 可选方式：
+  - 修改 `nuget.config` 添加源。
+  - 安装命令中使用 `-Source` 参数指定源地址。
+
+请根据你的使用场景选择合适的方式。
+
+
 # Security Vulnerability Found
 IdentityServer4 contains a known Open Redirect vulnerability (CVE-2024-39694) that we do not intend to address in IdentityServer4. Please see [the security advisory](https://github.com/IdentityServer/IdentityServer4/security/advisories/GHSA-55p7-v223-x366) for more details and consider upgrading to [Duende.IdentityServer](www.duendesoftware.com) to receive updates.
 
