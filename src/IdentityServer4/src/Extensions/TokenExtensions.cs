@@ -81,7 +81,7 @@ namespace IdentityServer4.Extensions
                 }
 
                 // add confirmation claim (if present)
-                if (!token.Confirmation.IsPresent())
+                if (token.Confirmation.IsPresent())
                 {
                     payload.Add(JwtClaimTypes.Confirmation,
                         JsonSerializer.Deserialize<JsonElement>(token.Confirmation));
