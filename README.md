@@ -52,6 +52,12 @@ nuget install PackageName -Version x.x.x
 dotnet add package PackageName --version x.x.x
 ```
 
+或在控制台使用：
+
+```bash
+PM> Install-Package PackageName -Version x.x.x
+```
+
 ---
 
 ### 方法二：安装时直接指定源地址
@@ -66,6 +72,12 @@ nuget install PackageName -Version x.x.x -Source https://www.myget.org/F/archert
 
 ```bash
 dotnet add package PackageName --version x.x.x --source https://www.myget.org/F/archertrister/api/v3/index.json
+```
+
+或使用 `Install-Package` 命令
+
+```bash
+PM> Install-Package PackageName -Version x.x.x -Source https://www.myget.org/F/archertrister/api/v3/index.json
 ```
 
 ---
