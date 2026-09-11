@@ -1,5 +1,7 @@
 # 概述
 
+[![publish](https://github.com/ArcherTrister/IdentityServer4/actions/workflows/publish.yml/badge.svg)](https://github.com/ArcherTrister/IdentityServer4/actions/workflows/publish.yml)
+
 ## ⚠️ 注意事项
 
 本项目为原始项目的**分支版本（Fork）**，仅用于特定用途，**不会发布到 nuget.org**，**仅发布到 MyGet 私有源**。
